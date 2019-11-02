@@ -39,4 +39,13 @@ PlacesBook.prototype.deletePlace = function(id) {
 }
 
 // Business logic for Place
-function Place(city, country, )
+function Place(park, state, time, notes) {
+    this.park = park,
+    this.state = state,
+    this.time = time,
+    this.notes = notes
+}
+
+Place.prototype.displayInfo = function(place) {
+    return this.park + ", " + this.state + " " + this.time;
+}
