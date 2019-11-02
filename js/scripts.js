@@ -1,3 +1,5 @@
+// Business logic for PlacesBook
+
 function PlacesBook() {
     this.places = [],
     this.currentId = 0
@@ -23,3 +25,18 @@ PlacesBook.prototype.findPlace = function(id) {
     };
     return false;
 }
+
+PlacesBook.prototype.deletePlace = function(id) {
+    for (let i = 0; i < this.places.length; i++) {
+        if (this.places[i]) {
+            if (this.places[i].id == id) {
+                delete this.places[i];
+                return true;
+            }
+        }
+    };
+    return false;
+}
+
+// Business logic for Place
+function Place(city, country, )
