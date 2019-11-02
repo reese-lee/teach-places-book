@@ -13,6 +13,13 @@ PlacesBook.prototype.assignId = function() {
     return this.currentId;
 }
 
-function Place() {
-
+PlacesBook.prototype.findPlace = function(id) {
+    for (let i = 0; i < this.places.length; i++){
+        if (this.places[i]) {
+            if (this.places[i].id == id) {
+                return this.places[i];
+            }
+        }
+    };
+    return false;
 }
