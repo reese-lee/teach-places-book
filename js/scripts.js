@@ -47,5 +47,35 @@ function Place(park, state, time, notes) {
 }
 
 Place.prototype.displayInfo = function(place) {
-    return this.park + ", " + this.state + " " + this.time;
+    return this.park + ", " + this.state + " " + this.time + "Notes: " + this.notes;
 }
+
+// let moab = new Place("Moab", "Utah", "June 2017", "This was such a cool spot");
+// console.log(moab);
+
+// User interface logic
+let newPlacesBook = new PlacesBook();
+
+function displayPlacesDetails(newPlacesBookToDisplay) {
+    let placesList = $("ul#places");
+    let htmlForPlacesInfo = "";
+    newPlacesBookToDisplay.places.forEach(function(place) {
+        htmlForPlacesInfo += "<li id=" + place.id + ">" + place.park + ", " + place.state + "<br>Date: " + place.time + "</br>" + "Notes: " + place.notes + "</li>"
+    });
+    placesList.html(htmlForPlacesInfo);
+    }
+
+$(document).ready(function() {
+    $("form#new-place").submit(function(event) {
+        event.preventDefault();
+        let inputtedParkName = $("input#new-park").val();
+        let inputtedParkState = $("input#new-state").val();
+        let inputtedDate = $("input#new-date").val();
+        let inputtedNotes = $("input#new-notes").val();
+
+        let newPlace = new Place(inputtedParkName, inputtedParkState, inputtedDate, inputtedNotes);        
+        newPlacesBook.addPlace(newPlace);
+        displayPlacesDetails(newPlacesBook);
+    })
+})
+
